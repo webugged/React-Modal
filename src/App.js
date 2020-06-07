@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import ModalComponent from './components/ModalComponent'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ModalComponent
+        beforeClose={() => console.log("Before Close function")}
+        renderTrigger={(open, close) => <button onClick={open}>Open Modal</button>}>
+        <div>
+          <ul>
+            <ol>Children usage</ol>
+            <ol>Children usage</ol>
+            <ol>Children usage</ol>
+          </ul>
+        </div>
+      </ModalComponent>
+
+      <ModalComponent
+        renderTrigger={(open, close) => <button onClick={open}>Open Modal</button>}>
+        {(props, close) => (
+          <div>Function Usage</div>  
+        )}
+      </ModalComponent>
     </div>
   );
 }
 
 export default App;
+
+
+export const Some = () => <div>SSSS</div>
